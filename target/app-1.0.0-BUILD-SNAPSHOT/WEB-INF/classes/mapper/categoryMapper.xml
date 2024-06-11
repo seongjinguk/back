@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/schema/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bitstudy.app.dao.CategoryDao">
+
+
+    <select id="count" resultType="int">
+        SELECT count(*) FROM product
+    </select>
+
+    <select id="selectAll" resultType="CategoryDto">
+        select * from product
+        order by p_seqno desc
+    </select>
+
+    <select id="select" parameterType="int" resultType="com.bitstudy.app.domain.CategoryDto">
+        SELECT * FROM product WHERE p_seqno = #{p_seqno}
+    </select>
+
+    <select id="selectPage" parameterType="map" resultType="CategoryDto">
+        select * from product
+        order by  p_seqno desc
+        limit #{offset} , #{pageSize}
+    </select>
+
+    <select id="selectByName" resultType="CategoryDto" parameterType="String">
+        SELECT p_name, p_price FROM product WHERE p_name = #{p_name}
+    </select>
+
+    <select id="selectSeqno" resultType="CategoryDto" parameterType="String">
+        SELECT p_seqno FROM product WHERE p_name = #{p_name}
+    </select>
+    <!--    <insert id="insertProduct"  parameterType="CategoryDto">-->
+    <!--        insert in to product values(-->
+    <!--    </insert>-->
+    <update id="updateReviewCount" parameterType="map">
+        update product set p_review=p_review + #{count}
+        where p_seqno=#{p_seqno}
+    </update>
+</mapper>

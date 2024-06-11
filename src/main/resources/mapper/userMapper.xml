@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/schema/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bitstudy.app.dao.UserMapper">
+
+<!--    로그인용 -->
+    <select id="selectUser" parameterType="String" resultType="UserDto">
+        select * from user_info where u_id=#{u_id}
+    </select>
+<!--    회원가입용 -->
+    <insert id="insertUser" parameterType="userDto">
+        insert into user_info values (null,#{u_id},#{u_pw},#{u_name},#{u_birth},#{u_gender},#{u_phone},#{u_email},default,default,#{u_foot_shape})
+    </insert>
+    <update id="updateUser" parameterType="userDto">
+        update user_info set u_pw=#{u_pw}, u_email=#{u_email}, u_birth=#{u_birth} where u_id=#{u_id}
+    </update>
+    <delete id="deleteUser" parameterType="String">
+        delete from user_info where u_id=#{u_id}
+    </delete>
+    <delete id="deleteAll" >
+        truncate user_info
+    </delete>
+
+
+</mapper>

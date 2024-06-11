@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <typeAliases>
+
+        <typeAlias alias="UserDto" type="com.bitstudy.app.domain.UserDto"/>
+        <typeAlias alias="UserAddrDto" type="com.bitstudy.app.domain.UserAddrDto"/>
+        <typeAlias type="com.bitstudy.app.domain.CategoryDto" alias="CategoryDto"/>
+        <typeAlias type="com.bitstudy.app.domain.NoticeDto" alias="NoticeDto"/>
+        <typeAlias type="com.bitstudy.app.domain.Notice_searchDto" alias="Notice_searchDto"/>
+        <typeAlias type="com.bitstudy.app.domain.Category_filterDto" alias="category_filterDto"/>
+        <typeAlias type="com.bitstudy.app.domain.ReviewDto" alias="ReviewDto"/>
+        <typeAlias alias="BuyDto" type="com.bitstudy.app.domain.BuyDto"/>
+        <typeAlias alias="CartDto" type="com.bitstudy.app.domain.CartDto"/>
+        <typeAlias alias="ProductBuyDto" type="com.bitstudy.app.domain.ProductBuyDto"/>
+        <typeAlias alias="com.bitstudy.app.domain.PaymentDto" type="com.bitstudy.app.domain.PaymentDto"/>
+    </typeAliases>
+
+
+
+
+
+</configuration>

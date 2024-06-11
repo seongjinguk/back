@@ -1,0 +1,281 @@
+.content_area1{  
+    margin: 30px auto;
+    width: 1300px;
+    height: 50vh;
+    position: relative;
+}
+.cart_box{
+    width: 100%;
+}
+.cart_txt{
+    text-align: center;
+    font-weight: bold;
+    font-size: 35px;
+    margin: 100px 0 50px 0;
+    position: relative;
+}
+.cart_txt::after {
+    content: "";
+    display: block;
+    width: 11%;
+    height: 4px;
+    background-color: black;
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.cart_area_L{
+    width: 50%;
+    height: 100%;
+    float: left;
+    margin-top: 50px;
+}
+.cart_area_R{
+    width: 50%;
+    float: right;
+    margin-top: 100px;
+
+}
+.order_price_txt{
+    width: 100%;
+    height: 60px; 
+    border: 2px solid #ddd;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 60px;
+}
+.order_price_txt > span{
+    margin:20px;
+}
+.order_price_detail{
+    width: 100%;
+    border: 2px solid #ddd;
+    border-top: none;
+    }
+.detail_txt{
+    font-size: 20px;
+    font-weight: bold;
+    padding: 20px;
+    display: flex;
+    justify-content:space-between;
+}
+.detail_txt:last-child{
+    font-weight: bold;
+}
+.disc_pr > span{
+    color: red;
+}
+.total_price2 > span:first-child{
+    color: #000;
+}
+.span_wrap{
+    display: flex;
+    justify-content: right;
+}
+
+
+
+.discount_price > span:last-child{
+    color: red;
+}
+
+
+.detail_txt > span:last-child{
+    font-weight: bold;
+}
+#chkall{
+    width: 15px;
+    height: 15px;
+}
+.select_area{
+    width: 100%;
+    margin-bottom: 27px;
+}
+.select_area > label > span{
+    font-weight: bold;
+    
+}
+    
+label #items {
+    margin-left: 15px;
+}
+
+.select_box{
+    width: 95%;
+    height: 20px;
+    border: 2px solid #ddd;
+    border-bottom: 0;
+    padding: 20px 0;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 20px;
+}
+
+.option_select{
+    cursor: pointer;
+    margin-right: 15px;
+    float: right;
+}
+.payment_item_box{
+    width: 95%;
+    height: 150px;
+    border: 2px solid #ddd;
+    display: flex;
+}
+.payment_item_box_L{
+    width: 20%;
+    height: 100%;
+    position: relative;
+
+}
+.item_box{
+    width: 105px;
+    height: 132px;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+.item_box > img {
+    width: 105px;
+    height: 132px;
+}
+.item_info{
+    padding:5px;
+}
+.item_info > span{
+    font-size: 14px;
+    font-weight: bold;
+}
+.payment_item_box_R{
+    width: 85%;
+    height: 100%;
+    float: right;
+}
+#txt_qty{
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    width: 25px;
+    height: 30px;
+    outline: none;
+    background-color: inherit;
+}
+.item_name{
+    font-size: 20px;
+    font-weight: bold;
+}
+/* .item_price{
+    float: right;
+} */
+
+.gotopayment {
+    float: right;
+    margin: 20px 21px;
+    right: 40px;
+    width: 150px;
+    height: 60px;
+    font-size: 20px;
+    font-weight: bold;
+    background: #FFE512;
+    border: none;
+    transition: all 0.25s;
+    cursor: pointer;
+}
+
+.gotopayment:hover {
+    background: #000;
+    color: #ffffff;
+}
+
+
+.products {
+    padding: 20px 30px;
+    flex: 1;
+}
+
+.products .category {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.products .product-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.products .product {
+    width: 200px;
+    text-align: left;
+    margin: 10px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.product p {
+    margin-top: 10px;
+    margin-bottom: 0;
+    font-size: 15px;
+}
+
+.products .product img {
+    width: 100%;
+}
+
+.products .product .price {
+    margin-top: 5px;
+}
+
+.category h2 {
+    margin: 180px 0 20px 0;
+}
+
+.pymt_btn {
+    height: 100px;
+}
+
+
+.color_box1 {
+    width: 15px;
+    height: 15px;
+    background-color: #000;
+    border: 2px solid #000;
+    border-radius: 2px;
+    margin: 15px 0;
+}
+
+.color_box2 {
+    width: 15px;
+    height: 15px;
+    background-color: #ffffff;
+    border: 2px solid #000;
+    border-radius: 2px;
+    margin: 15px 0;
+}
+
+.color_box3 {
+    width: 15px;
+    height: 15px;
+    background-color: #4b2d2d;
+    border: 2px solid #000;
+    border-radius: 2px;
+    margin: 15px 0;
+}
+
+.color_box4 {
+    width: 15px;
+    height: 15px;
+    background-color: bisque;
+    border: 2px solid #000;
+    border-radius: 2px;
+    margin: 15px 0;
+}
+
+
+.content_area2{  
+    margin: 30px auto;
+    width: 1400px;
+}

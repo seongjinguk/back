@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/schema/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bitstudy.app.dao.AddrMapper">
+    <insert id="insertAddr" parameterType="UserAddrDto">
+        insert into user_addr values (null,#{u_seqnoFk},#{a_rec},#{a_zipcode},#{a_addr},#{a_addr_detail},#{a_group})
+    </insert>
+<!--    <select id="selectAddr" parameterType="String" resultType="UserAddrDto">-->
+<!--        select * from user_addr where u_seqnoFk = user_info.u_seqno-->
+<!--    </select>-->
+    <resultMap type="UserAddrDto" id="userAddrDto">
+    <id column="a_seqno" property="a_seqno" />
+    <result column="u_seqnoFk" property="u_seqnoFk" />
+    <result column="a_rec" property="a_rec" />
+    <result column="a_zipcode" property="a_zipcode" />
+    <result column="a_addr" property="a_addr" />
+    <result column="a_addr_detail" property="a_addr_detail" />
+    <result column="a_group" property="a_group" />
+    <association javaType="UserDto" property="userDto">
+        <id column="u_seqno" property="u_seqno"/>
+        <result column="u_id" property="u_id"/>
+        <result column="u_pw" property="u_pw"/>
+        <result column="u_name" property="u_name"/>
+        <result column="u_birth" property="u_birth"/>
+        <result column="u_gender" property="u_gender"/>
+        <result column="u_phone" property="u_phone"/>
+        <result column="u_email" property="u_email"/>
+        <result column="u_quit" property="u_quit"/>
+        <result column="u_reg_date" property="u_reg_date"/>
+        <result column="u_foot_shape" property="u_foot_shape"/>
+    </association>
+    </resultMap>
+    <select id="selectAddr" parameterType="int" resultMap="userAddrDto">
+        select a.a_rec ,a.a_zipcode , a.a_addr , a.a_addr_detail , a.a_group , u.u_name , u.u_phone
+        from	user_addr a , user_info u
+        where	a.u_seqnoFk = u.u_seqno
+        and	   u_seqno = #{u_seqno}
+        order by a_seqno desc
+    </select>
+    <select id="select" parameterType="int" resultMap="userAddrDto">
+        select * from user_addr where u_seqnoFk = #{u_seqno}
+    </select>
+
+
+
+
+
+</mapper>

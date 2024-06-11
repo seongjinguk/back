@@ -1,0 +1,256 @@
+.edit-profile-container {
+    background-color: #fff;
+    padding: 40px;
+    margin: 30px auto;
+    max-width: 600px;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.edit-profile-container h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.edit-profile-container h1::after {
+    content: '';
+    width: 30%;
+    height: 3px;
+    background-color: #333;
+    display: block;
+    margin: 10px auto 0;
+}
+
+.edit-profile-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-profile-form .user-box {
+    position: relative;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.edit-profile-form .user-box input {
+    width: 100%;
+    height: 60px;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    font-family: "Oswald", sans-serif;
+    font-size: 16px;
+    color: #000000;
+    border: 2px solid;
+    outline: none;
+    box-shadow: 0 4px 0px rgba(0, 0, 0, 0.35);
+    background: transparent;
+    transition: all 0.3s ease-in-out;
+    box-sizing: border-box;
+}
+
+.edit-profile-form input#email {
+    margin: 0;
+}
+
+.edit-profile-form .user-box label {
+    position: absolute;
+    top: 16px;
+    left: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+    pointer-events: none;
+    transition: 0.25s;
+    background-color: white;
+    height: 25px;
+    padding: 0;
+    border-radius: 50px;
+}
+
+.edit-profile-form .user-box input:focus~label,
+.edit-profile-form .user-box input:valid~label {
+    transform: translateY(-25px);
+    font-size: 14px;
+    color: #000000;
+}
+
+.password-box {
+    display: flex;
+    align-items: center;
+}
+
+.toggle-password {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.fixed-label {
+    transform: translateY(-25px);
+    font-size: 14px;
+    color: #000000;
+}
+
+
+
+.options {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 40px;
+}
+
+.gender {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.gender_select {
+    display: flex;
+    align-items: center;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.gender_select input[type="radio"] {
+    display: none;
+}
+
+.gender_select label {
+    display: inline-block;
+    padding: 5px 20px;
+    border: 2px solid #000;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 10px;
+    user-select: none;
+}
+
+.gender_select input[type="radio"]:checked+label {
+    background-color: #000;
+    color: #fff;
+}
+
+.foot-shape {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#foot-shape {
+    width: 120px;
+    height: 45px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    border: 2px solid #000;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+#foot-shape option {
+    font-size: 18px;
+}
+
+select {
+    appearance: none;
+    background: url('../img/foot_option_icon.png') no-repeat right 10px center;
+    background-size: 10px 5px;
+    padding-right: 30px;
+}
+
+
+.edit-profile-form .submit {
+    padding: 15px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s, color 0.3s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.edit-profile-form button:hover {
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #333;
+}
+
+.edit-profile-form button:active {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 480px) {
+    .options {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .gender {
+        display: flex;
+        align-items: flex-start;
+    }
+
+    .gender_select {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .gender_select label {
+        margin: 0 0 10px 0;
+        width: 100%;
+        text-align: center;
+        padding: 5px 17px;
+    }
+
+    .foot-shape {
+        display: flex;
+        align-items: flex-end;
+    }
+}
+
+@media (max-width: 361px) {
+    .options {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .foot-shape {
+        margin-top: 20px;
+        align-items: center;
+    }
+
+    .gender {
+        display: flex;
+        align-items: center;
+    }
+
+    .gender_select {
+        align-items: center;
+    }
+
+    .gender_select label {
+        width: 150%;
+        height: 42px;
+        font-size: 26px;
+        text-align: center;
+        padding: 5px 17px;
+    }
+
+    #foot-shape {
+        width: 185px;
+        height: 50px;
+        font-size: 26px;
+    }
+}

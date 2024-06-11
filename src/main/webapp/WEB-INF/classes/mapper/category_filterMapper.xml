@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bitstudy.app.dao.Category_filterDao">
+
+<!--    <select id="selectProductsByMultiple" parameterType="map" resultType="com.bitstudy.app.domain.Category_filterDto">-->
+
+<!--        SELECT pps.p_name, pps.p_seqno, pps.p_color,pps.p_price,p_date,p_pop, pps.p_seqnoFk, pps.ps_size, pg.p_seqnoFk, pg.pg_gender-->
+<!--        FROM (-->
+<!--        SELECT p.p_name, p.p_seqno, p.p_color, p.p_price, ps.p_seqnoFk, ps.ps_size,p.p_date,p.p_pop-->
+<!--        FROM product p-->
+<!--        LEFT JOIN p_size ps ON p.p_seqno = ps.p_seqnoFk-->
+<!--        ) AS pps-->
+<!--        LEFT JOIN p_gender AS pg ON pg.p_seqnoFk = pps.p_seqno-->
+<!--        WHERE TRUE-->
+<!--         <if test="colors != null and colors.size > 0">-->
+<!--            AND p_color IN-->
+<!--            <foreach item="color" collection="colors" open="(" separator="," close=")">-->
+<!--                #{color}-->
+<!--            </foreach>-->
+<!--        </if>-->
+<!--        <if test="maxPrice != 0">-->
+<!--            AND p_price BETWEEN #{minPrice} AND #{maxPrice}-->
+<!--        </if>-->
+<!--        <if test="sizeCount != null and sizeCount != ''">-->
+<!--            AND ps_size = #{sizeCount}-->
+<!--        </if>-->
+<!--        <if test="gender != null and gender != ''">-->
+<!--            AND pg_gender = #{gender}-->
+<!--        </if>-->
+<!--        <choose>-->
+<!--            <when test="orderBy == 'date'">-->
+<!--                ORDER BY p_date DESC-->
+<!--            </when>-->
+<!--            <when test="orderBy == 'popularity'">-->
+<!--                ORDER BY p_pop DESC-->
+<!--            </when>-->
+<!--            <when test="orderBy == 'priceLowToHigh'">-->
+<!--                ORDER BY pps.p_price ASC-->
+<!--            </when>-->
+<!--            <when test="orderBy == 'priceHighToLow'">-->
+<!--                ORDER BY pps.p_price DESC-->
+<!--            </when>-->
+<!--            <otherwise>-->
+<!--                  p_date DESC-->
+<!--            </otherwise>-->
+<!--        </choose>-->
+<!--    </select>-->
+
+</mapper>

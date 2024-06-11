@@ -1,0 +1,362 @@
+main{
+    margin: 30px auto;
+}
+.content_area{
+    margin: 30px auto;
+    width: 1400px;
+    position: relative;
+}
+.payment_txt {
+    text-align: center;
+    font-weight: bold;
+    font-size: 35px;
+    margin: 100px 0;
+}
+.payment_L{
+    width: 60%;
+    height: 100%;
+    float: left;
+}
+.payment_R{
+    width: 40%;
+    height: 100%;
+    float: left;
+}
+.payment_item_info{
+    font-size: 20px;
+    font-weight: bold;
+    margin:0 0 11px 15px;
+}
+.payment_item_box{
+    width: 95%;
+    height: 150px;
+    border: 2px solid #ddd;
+    display: flex;
+    position: relative;
+}
+.payment_item_box_L{
+    width: 95%;
+    overflow-y: auto;
+    position: relative;
+
+}
+.fromCart{
+    overflow-y:auto;
+    width: 100%;
+    height: 500px
+
+}
+.item_box{
+    width: 105px;
+    height: 132px;
+    position: absolute;
+    top:15%;
+    left:20%;
+    transform: translateX(-50%) translateY(-50%);
+}
+.item_box > img {
+    width: 105px;
+    height: 132px;
+}
+.item_info{
+    padding:5px;
+}
+.item_info > span{
+    font-size: 14px;
+    font-weight: bold;
+}
+.payment_item_box_R{
+    width: 85%;
+    height: 100%;
+    float: right;
+}
+.item_name{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.user_info_txt {
+    width: 80%;
+    padding: 35px 0 10px 0;
+    border-bottom: 2px solid #bbb;
+}
+.user_info_txt > span {
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 15px;
+}
+
+.user_info_area {
+    width: 95%;
+    margin: 20px 0 40px 0;
+}
+.user_info_name {
+    display: flex;
+    margin: 25px 0;
+    gap: 5px;
+    align-items: baseline;
+}
+.user_info_name > fieldset {
+    width: 95%;
+    height: 50px;
+    font-size: 16px;
+    color: #ddd;
+}
+.user_info_name > fieldset > input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+}
+.user_info_name > button {
+    width: 140px;
+    height: 57px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #000;
+}
+.user_info_phone_num {
+    width: 100%;
+}
+.user_info_phone_num > fieldset {
+    height: 50px;
+    font-size: 16px;
+    color: #ddd;
+}
+.user_info_phone_num > fieldset > input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+}
+.address_info_txt {
+    width: 80%;
+    padding: 20px 0 10px 0;
+    border-bottom: 2px solid #bbb;
+}
+.address_info_txt > span {
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 15px;
+}
+.address_info_area {
+    width: 95%;
+    margin: 20px 0 40px 0;
+}
+.address_optioon {
+    width: 100%;
+    margin-top: 20px;
+}
+.address_optioon > fieldset {
+    height: 50px;
+    font-size: 16px;
+    color: #ddd;
+}
+.address_optioon > fieldset > input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+}
+.user_phone_num {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+}
+.user_phone_num > fieldset {
+    width: calc(100% / 3);
+    height: 50px;
+    font-size: 16px;
+    color: #ddd;
+}
+.user_phone_num > fieldset > input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+}
+.user-box {
+    position: relative;
+    margin-bottom: 30px;
+}
+.user-box input {
+    width: 80%;
+    height: 30px;
+    padding: 10px 15px;
+    font-family: "Oswald", sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    color: #000000;
+    border: 2px solid;
+    box-shadow: 0 4px 0px rgba(0, 0, 0, 0.35);
+    outline: none;
+    background: transparent;
+    transition: all 0.3s ease-in-out;
+}
+#phonebox.user-box {
+    margin-bottom: 0;
+}
+.user-box label {
+    position: absolute;
+    top: 14px;
+    left: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+    pointer-events: none;
+    transition: 0.25s;
+    background-color: #f5f5f5;
+    height: 25px;
+    padding: 0;
+    border-radius: 50px;
+}
+.user-box input:focus ~ label,
+.user-box input:valid ~ label {
+    transform: translateY(-25px);
+    font-size: 14px;
+    color: #333;
+}
+
+
+.address_chk_box{
+    margin: 10px 0 40px 0;
+    cursor: pointer;
+}
+
+.address_chk_box > label > span{
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.payment_method_area{
+    width: 95%;
+    display: flex;
+    flex-direction: row;
+}
+
+.p_methods {
+    opacity: 0;
+}
+
+.payment_method_area label {
+    margin: 20px 36px 0 0;
+    display: flex;
+    width: 200px;
+    height: 50px;
+    background-color: #000;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.25s;
+}
+
+.payment_method_area > a {
+    width: 0;
+    height: 0;
+}
+
+.payment_method_area label:hover {
+    background-color: #FFE512;
+    color: #000
+}
+
+.order_price{
+    margin-top: 40px;
+    width: 80%;
+    height: 230px;
+}
+.order_price_txt{
+    width: 100%;
+    height: 60px; 
+    border: 2px solid #ddd;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 60px;
+}
+.order_price_txt > span{
+    margin:20px;
+}
+.order_price_detail{
+    width: 100%;
+    border: 2px solid #ddd;
+    border-top: none;
+    }
+.detail_txt{
+    font-size: 16px;    
+    padding:20px;
+    display: flex;
+    justify-content: space-between;
+}
+.detail_txt:last-child{
+    font-weight: bold;
+}
+.total_price2 > span:last-child{
+    color: red;
+}
+.detail_txt > span:last-child{
+    font-weight: bold;
+}
+.order_agree{
+    width: 100%;
+    height: 50px;
+    border-bottom: 2px solid #75757575;
+    margin-top: 20px;
+}
+.order_agree > span{ 
+    margin-left: 20px;
+    font-size: 20px;
+    font-weight: bold;
+
+}
+.chk_area{
+    margin: 10px 0;
+    font-size: 16px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: baseline;
+    gap: 10px;
+}
+.chk_area > input {
+    width: 13px;
+    height: 13px;
+}
+
+.chk_area label {
+    /* width: 20px;
+    height: 20px; */
+    padding: 0 20px;
+}
+
+.caution {
+    display: flex;
+    flex-direction: column;
+}
+
+.payment_btn {
+    width: 100%;
+    height: 50px;
+    background-color: #FFE512;
+    text-align: center;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: all 0.25s;
+    cursor: pointer;
+}
+
+.payment_btn:hover {
+    background-color: #000;
+    color: #fff;
+}

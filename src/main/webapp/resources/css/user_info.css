@@ -1,0 +1,160 @@
+.edit-profile-container {
+    background-color: #fff;
+    padding: 40px;
+    margin: 30px auto;
+    max-width: 600px;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.edit-profile-container h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.edit-profile-container h1::after {
+    content: '';
+    width: 30%;
+    height: 3px;
+    background-color: #333;
+    display: block;
+    margin: 10px auto 0;
+}
+
+.edit-profile-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.edit-profile-form .user-box {
+    position: relative;
+    margin-bottom: 30px;
+    width: 100%;
+    max-width: 100%;
+}
+.edit-profile-form .user-box input {
+    width: 100%;
+    height: 60px;
+    padding: 10px 15px;
+    margin-bottom: 5px;
+    font-family: "Oswald", sans-serif;
+    font-size: 16px;
+    color: #000000;
+    border: 2px solid;
+    outline: none;
+    box-shadow: 0 4px 0px rgba(0, 0, 0, 0.35);
+    background: transparent;
+    transition: all 0.3s ease-in-out;
+    box-sizing: border-box;
+}
+.edit-profile-form .user-box label {
+    position: absolute;
+    top: 16px;
+    left: 9px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+    pointer-events: none;
+    transition: 0.25s;
+    background-color: white;
+    height: 25px;
+    padding: 0 5px;
+    border-radius: 50px;
+}
+.edit-profile-form .user-box input:focus~label,
+.edit-profile-form .user-box input:valid~label {
+    transform: translateY(-25px);
+    font-size: 14px;
+    color: #333;
+}
+
+.edit-profile-form .submit,
+.edit-profile-form .delete-account {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s, color 0.3s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    margin: 15px 0 5px 0;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.edit-profile-form .submit {
+    background-color: #333;
+    color: #fff;
+}
+
+.edit-profile-form .delete-account {
+    background-color: #e74c3c;
+    color: #fff;
+}
+
+.edit-profile-form .submit:hover {
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #333;
+}
+
+.edit-profile-form .delete-account:hover {
+    background-color: #fff;
+    color: #e74c3c;
+    border: 1px solid #e74c3c;
+}
+
+.edit-profile-form .submit:active,
+.edit-profile-form .delete-account:active {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transform: translateY(2px);
+}
+
+
+
+/* 레이어팝업 스타일 */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.popup {
+    display: flex;
+    width: 250px;
+    height: 200px;
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup p {
+    margin: 0 0 20px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.popup button {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border: 2px solid;
+    cursor: pointer;
+}

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/schema/mybatis-3-mapper.dtd">
+<mapper namespace="com.bitstudy.app.dao.ProductBuyMapper">
+    <update id="updateProduct" parameterType="productBuyDto">
+        update p_size set ps_count = #{ps_count} where ps_size=#{ps_size} And p_seqnoFk= #{p_seqnoFk};
+    </update>
+    <resultMap type="ProductBuyDto" id="productBuyDto">
+        <id column="ps_seqno" property="ps_seqno"/>
+        <result column="p_seqnoFk" property="p_seqnoFk"/>
+        <result column="ps_size" property="ps_size"/>
+        <result column="ps_count" property="ps_count"/>
+     <association property="categoryDto" javaType="categoryDto">
+         <id column="p_seqno" property="p_seqno" />
+         <result column="p_name" property="p_name" />
+         <result column="p_price" property="p_price" />
+     </association>
+    </resultMap>
+    <select id="selectlist" parameterType="int" resultMap="productBuyDto">
+        select p.p_name, ps.ps_size , p.p_price,ps.ps_count
+        from	product p , p_size ps
+        where	p.p_seqno = ps.p_seqnoFk
+        and	   p_seqno = #{p_seqno} and ps_size = #{ps_size}
+    </select>
+    <select id="selectPsizelist" parameterType="int" resultType="productBuyDto">
+        select ps_size from p_size
+        where	p_seqnoFk = #{p_seqno}
+    </select>
+    <select id="selectPcount" parameterType="int" resultType="productBuyDto">
+        select ps_count from p_size
+        where ps_size = #{ps_size}
+    </select>
+</mapper>

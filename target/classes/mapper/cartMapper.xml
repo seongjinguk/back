@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/schema/mybatis-3-mapper.dtd">
+<mapper namespace="com.bitstudy.app.dao.CartMapper">
+    <insert id="cartInsert" parameterType="cartDto">
+        insert into cart values(null,#{p_seqnoFk},#{u_seqnoFk},#{c_size},#{c_price},#{c_count},default);
+    </insert>
+    <resultMap id="userMap" type="UserDto">
+        <id column="u_seqno" property="u_seqno"/>
+    </resultMap>
+    <resultMap id="productMap" type="productBuyDto">
+        <id column="ps_seqno" property="ps_seqno"/>
+        <result column="p_seqnoFk" property="p_seqnoFk"/>
+        <result column="ps_size" property="ps_size"/>
+    </resultMap>
+    <resultMap id="joinCart" type="cartDto">
+        <id column="c_seqno" property="c_seqno"/>
+        <result column="p_seqnoFk" property="p_seqnoFk"/>
+        <result column="u_seqnoFk" property="u_seqnoFk"/>
+        <result column="c_count" property="c_count"/>
+        <result column="c_size" property="c_size"/>
+        <result column="c_price" property="c_price"/>
+        <result column="c_date" property="c_date"/>
+        <collection property="userDto" resultMap="userMap"/>
+        <collection property="productBuyDto" resultMap="productMap"/>
+        <collection property="categoryDto" resultMap="categoryMap"/>
+    </resultMap>
+    <resultMap id="categoryMap" type="CategoryDto">
+        <id column="p_seqno" property="p_seqno"/>
+        <result column="p_name" property="p_name"/>
+    </resultMap>
+<!--    <select id="cartShow" resultMap="joinCart">-->
+<!--        select pps.p_name, cu.c_count,cu.c_size,cu.c_price,cu.c_date from-->
+<!--        (select c.p_seqnoFk,c.c_count,c.c_date,c.c_price,c.c_size,u.u_seqno from cart as c-->
+<!--        left join  user_info as u on u.u_seqno = c.u_seqnoFK) as cu-->
+<!--        join-->
+<!--        (select p.p_name,p.p_seqno,ps.ps_size from p_size as ps left join product as p on ps.p_seqnoFk = p.p_seqno) as pps on  cu.p_seqnoFk = pps.p_seqno and pps.ps_size=cu.c_size-->
+<!--        where pps.p_seqno=64 and cu.u_seqno = 17;-->
+<!--    </select>-->
+<!--    select c.c_size,c.c_count,u.u_name,c.u_seqnoFk,u.u_seqno from cart c-->
+<!--    join user_info u  on c.u_seqnoFk=u.u_seqno-->
+<!--    where u.u_seqno = 17;-->
+    <select id="cartShow" resultMap="joinCart">
+        select cu.c_seqno, p.p_name, cu.c_size,cu.c_count,cu.c_price,cu.p_seqnoFk,cu.u_seqnoFk,cu.c_date
+        from (select c.c_seqno,c.c_size,c.c_count,u.u_name,c.u_seqnoFk,u.u_seqno,c.p_seqnoFk,c.c_price,c.c_date from cart c
+        join user_info u  on c.u_seqnoFk=u.u_seqno) as cu
+        join product as p on cu.p_seqnoFk=p.p_seqno
+        where u_seqno=#{u_seqno}
+        order by cu.c_date desc;
+    </select>
+    <select id="cartItem" resultType="CategoryDto" parameterType="int">
+        select p_name from product
+        where p_seqno = #{p_seqno};
+    </select>
+    <delete id="deleteCart" parameterType="int">
+        delete from cart where c_seqno=#{c_seqno}
+    </delete>
+<!--    <update id="updateCart" parameterType="List">-->
+<!--        <foreach collection="list"   item="item" >-->
+<!--            update cart set c_count= #{item.b}-->
+<!--            where c_seqno = #{item.a}-->
+<!--        </foreach>-->
+<!--    </update>-->
+</mapper>

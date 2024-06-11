@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/schema/mybatis-3-mapper.dtd">
+<mapper namespace="com.bitstudy.app.dao.ReviewMapper">
+    <resultMap id="joinReview" type="reviewDto">
+        <id column="r_seqno" property="r_seqno"/>
+        <result column="r_bcode" property="r_bcode"/>
+        <result column="r_useqnoFk" property="r_useqnoFk"/>
+        <result column="r_comment" property="r_comment"/>
+        <result column="r_rec" property="r_rec"/>
+        <result column="r_rate" property="r_rate"/>
+        <result column="r_reg_datee" property="r_reg_date"/>
+        <collection property="buyDto" resultMap="buyMap"/>
+        <collection property="categoryDto" resultMap="productMap"/>
+    </resultMap>
+    <resultMap id="buyMap" type="buyDto">
+        <id column="b_seqno" property="b_seqno"/>
+        <result column="b_code" property="b_code"/>
+        <result column="p_seqnoFk" property="p_seqnoFk"/>
+    </resultMap>
+    <resultMap id="productMap" type="CategoryDto">
+        <id column="p_seqno" property="p_seqno"/>
+        <result column="p_name" property="p_name"/>
+        <result column="p_price" property="p_price"/>
+    </resultMap>
+
+    <!--    모든 댓글 삭제-->
+    <delete id="deleteAll">
+        truncate review
+    </delete>
+
+    <!--    댓글 작성자만 특정 게시글의 댓글 삭제-->
+    <delete id="delete" parameterType="map">
+        delete from review where r_seqno=#{r_seqno} and r_useqnoFk=#{u_seqno} <!-- and bno=#{bno}-->
+    </delete>
+
+<!--        특정 게시글의 댓글 개수 -->
+    <select id="count" parameterType="int" resultType="reviewDto">
+            select count(*) from review where r_pseqnoFK=#{p_seqno}
+    </select>
+
+<!--    <select id="p_seqno" parameterType="int" resultMap="joinReview">-->
+<!--        select b.p_seqnoFk from  review as r left join buy as b on b.b_code = r.r_bcode-->
+<!--        where r.r_bcode=#{b_code}-->
+<!--    </select>-->
+
+<!--        특정 게시글의 댓글 전체 다 불러오기-->
+    <select id="selectAll" parameterType="int" resultType="reviewDto">
+        select * from review
+        where r_pseqnoFK = #{p_seqno}
+        order by r_reg_date desc, r_seqno desc
+    </select>
+<!--        댓글 등록-->
+    <insert id="insert" parameterType="reviewDto">
+        insert into review
+        (r_seqno,r_pseqnoFk, r_useqnoFk,  r_bcode, r_comment,  r_rec,  r_rate,  r_reg_date)
+        values
+        (null, #{r_pseqnoFk},#{r_useqnoFk}, #{r_bcode}, #{r_comment}, default,#{r_rate},default )
+    </insert>
+
+    <!--    수정 - 댓글 작성자만 수정 가능하게 하기 -->
+    <update id="update" parameterType="reviewDto">
+        update review
+        set r_comment=#{r_comment}
+        where r_useqnoFk=#{u_seqno}
+    </update>
+</mapper>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bitstudy.app.dao.noticeMapper">
+
+    <select id="count" resultType="int">
+        SELECT count(*) FROM faq
+    </select>
+
+    <delete id="deleteAll">
+        TRUNCATE faq
+    </delete>
+
+    <delete id="delete" parameterType="map">
+        delete from faq where faq_seqno=#{faq_seqno} and faq_writer=#{faq_writer}
+    </delete>
+
+    <insert id="insert" parameterType="com.bitstudy.app.domain.NoticeDto">
+        INSERT INTO faq (faq_title, faq_content, faq_writer)
+        VALUES (#{faq_title}, #{faq_content}, #{faq_writer})
+    </insert>
+
+    <update id="update" parameterType="com.bitstudy.app.domain.NoticeDto">
+        UPDATE faq SET faq_title=#{faq_title}, faq_content=#{faq_content}
+        WHERE faq_seqno = #{faq_seqno} AND faq_writer=#{faq_writer}
+    </update>
+
+    <select id="select" parameterType="int" resultType="NoticeDto">
+        SELECT * from faq where faq_seqno = #{faq_seqno}
+    </select>
+
+    <update id="increaseViewCount" parameterType="int">
+        UPDATE faq SET faq_viewcount = faq_viewcount + 1
+        WHERE faq_seqno = #{faq_seqno}
+    </update>
+                        <!--   검색  -->
+    <select id="searchSelectPage" parameterType="Notice_searchDto" resultType="NoticeDto">
+        SELECT * FROM faq
+        WHERE true
+        <choose>
+            <when test='option == "T"'>
+                AND faq_title LIKE CONCAT('%', #{keyword}, '%')
+            </when>
+
+            <when test='option == "W"'>
+                AND faq_writer LIKE CONCAT('%', #{keyword}, '%')
+            </when>
+
+            <otherwise>
+                AND (faq_writer LIKE CONCAT('%', #{keyword}, '%')
+                OR faq_content LIKE CONCAT('%', #{keyword}, '%'))
+            </otherwise>
+        </choose>
+        ORDER BY faq_date DESC, faq_seqno DESC
+        LIMIT #{offset}, #{pageSize}
+    </select>
+
+    <select id="searchSelectCount" parameterType="Notice_searchDto" resultType="int">
+        SELECT count(*) FROM faq
+        WHERE
+        <choose>
+            <when test='option == "T"'>
+                faq_title LIKE CONCAT('%', #{keyword}, '%')
+            </when>
+            <when test='option == "W"'>
+                faq_writer LIKE CONCAT('%', #{keyword}, '%')
+            </when>
+            <otherwise>
+                (faq_title LIKE CONCAT('%', #{keyword}, '%') OR faq_content LIKE CONCAT('%', #{keyword}, '%'))
+            </otherwise>
+        </choose>
+    </select>
+
+    <select id="selectPage" parameterType="map" resultType="NoticeDto">
+        SELECT * FROM faq
+        ORDER BY faq_date DESC, faq_seqno DESC
+        LIMIT #{offset}, #{pageSize}
+    </select>
+
+</mapper>
